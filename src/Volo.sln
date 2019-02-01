@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volo.Wish.Api", "Volo.Wish.Api\Volo.Wish.Api.csproj", "{2D2FEA24-E55E-48ED-BF35-7414B03C9B48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Wish.Api", "Volo.Wish.Api\Volo.Wish.Api.csproj", "{2D2FEA24-E55E-48ED-BF35-7414B03C9B48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volo.Wish.Core", "Volo.Wish.Core\Volo.Wish.Core.csproj", "{3B311BC3-5555-4C17-8411-12D2300A415E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Wish.Core", "Volo.Wish.Core\Volo.Wish.Core.csproj", "{3B311BC3-5555-4C17-8411-12D2300A415E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volo.Wish.Infrastructure", "Volo.Wish.Infrastructure\Volo.Wish.Infrastructure.csproj", "{FB1E9821-2C2D-4251-8A76-FB1F20B350A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Wish.Infrastructure", "Volo.Wish.Infrastructure\Volo.Wish.Infrastructure.csproj", "{FB1E9821-2C2D-4251-8A76-FB1F20B350A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

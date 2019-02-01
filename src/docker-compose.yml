@@ -3,6 +3,7 @@ services:
 
   mariadb:
     image: mariadb:10.4
+    container_name: volo-mariadb
     environment:
       MYSQL_ROOT_PASSWORD: voloroot
       MYSQL_DATABASE: volo
@@ -18,11 +19,22 @@ services:
 
   adminer:
     image: adminer
+    container_name: volo-adminer 
     restart: always
     ports:
       - 8080:8080
     networks:
       - backend
+
+  redis:
+    image: redis
+    container_name: volo-redis 
+    ports:
+      - 6379:6379
+    networks:
+      - backend
+    volumes: 
+      - redis_data:/data
 
 networks:     
   backend:
@@ -30,4 +42,6 @@ networks:
 
 volumes:
   mariadb_data:
+    driver: local
+  redis_data:
     driver: local

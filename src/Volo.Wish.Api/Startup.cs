@@ -36,12 +36,16 @@ namespace Volo.Wish.Api
 
             services.AddDbContext<AppDbContext>(o => o.UseMySql(Configuration.GetConnectionString("mariadb")));
 
+            services.AddDistributedRedisCache(o =>
+            {
+                o.Configuration = "localhost";
+                o.InstanceName = "VoloInstance";
+            });
+
             // Now register our services with Autofac container.
             var builder = new ContainerBuilder();
-
             builder.RegisterModule(new CoreModule());
             builder.RegisterModule(new InfrastructureModule());
-
             builder.Populate(services);
             var container = builder.Build();
 
