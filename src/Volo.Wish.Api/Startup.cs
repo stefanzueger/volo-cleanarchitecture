@@ -5,11 +5,13 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Volo.Wish.Core;
 using Volo.Wish.Infrastructure;
+using Volo.Wish.Infrastructure.Repositories;
 
 namespace Volo.Wish.Api
 {
@@ -31,6 +33,8 @@ namespace Volo.Wish.Api
             {
                 c.SwaggerDoc("v1", new Info { Title = "Wishes API", Version = "v1" });
             });
+
+            services.AddDbContext<AppDbContext>(o => o.UseMySql(Configuration.GetConnectionString("mariadb")));
 
             // Now register our services with Autofac container.
             var builder = new ContainerBuilder();
@@ -65,6 +69,21 @@ namespace Volo.Wish.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Wishes API v1");
             });
+
+            MigrateDatabase(app);
+        }
+
+        private static void MigrateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<AppDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Volo.Wish.Infrastructure
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<InMemoryWishRepository>().As<IWishRepository>().SingleInstance();
+            builder.RegisterType<WishEfRepository>().As<IWishRepository>().SingleInstance();
         }
     }
 }
